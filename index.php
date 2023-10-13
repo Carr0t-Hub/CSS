@@ -2,109 +2,384 @@
 
 <div class="container">
   <div class="card">
-    <center>
-      <img src="assets/img/logo.png" class="mt-3 rounded mx-auto d-block" height="20%" width="20%" 
-    alt="DA-BAR">
-    </center>
     <div class="card-body">
-      <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-12">
+      <!-- <div class="d-flex justify-content-between">
+        <h4>Control No: ______</h4>
+        <div class="alert alert-light border h6" role="alert">
+          ANTI-RED TAPE AUTHORITY <br>
+          CLIENT SATISFACTORY MEASUREMENT <br>
+          FORM <br>
+          PSA Approval No: ARTA-2242-3
+        </div>
+      </div> -->
+      <center>
+        <img src="assets/img/logo.png" height="20%" width="20%" alt="DA-BAR">
+        <h5 class="fw-bold">HELP US SERVE YOU BETTER!</h5>
+      </center>
+      <div class="row mt-5">
+        <div class="col-md-3">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="fullName" placeholder="NAME">
-            <label for="fullName">NAME</label>
+            <input type="date" class="form-control" id="dateSurvey" placeholder="Select Date">
+            <label for="dateSurvey">Date</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select class="form-select" id="selectClientType" aria-label="">
+              <option disabled selected>Please Select</option>
+              <option value="Citizen">Citizen</option>
+              <option value="Business">Business</option>
+              <option value="Government">Government</option>
+            </select>
+            <label for="selectClientType">Client Type</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select class="form-select" id="selectGender" aria-label="">
+              <option disabled selected>Please Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <label for="selectGender">Sex</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select class="form-select" id="selectAge" aria-label="">
+              <option disabled selected>Please Select</option>
+              <option value="18 to 24">18 to 24</option>
+              <option value="25 to 39">25 to 39</option>
+              <option value="40 to 60">40 to 60</option>
+              <option value="61 and above">61 and above</option>
+            </select>
+            <label for="selectAge">Age</label>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-12">
+      <div class="row mt-1">
+        <div class="col-md-8">
+          <div class="form-floating">
+            <select class="form-select" id="selectResidence" aria-label="">
+              <option disabled selected>Please Select</option>
+              <option value="NCR - National Capital Region">NCR - National Capital Region</option>
+              <option value="CAR - Cordillera Administrative Region">CAR - Cordillera Administrative Region</option>
+              <option value="Region I - Ilocos Region">Region I - Ilocos Region</option>
+              <option value="Region II - Cagayan Valley">Region II - Cagayan Valley</option>
+              <option value="Region III - Central Luzon">Region III - Central Luzon</option>
+              <option value="Region IV-A - CALABARZON">Region IV-A - CALABARZON</option>
+              <option value="Region IV-B - MIMAROPA">Region IV-B - MIMAROPA</option>
+              <option value="Region V - Bicol Region">Region V - Bicol Region</option>
+              <option value="Region VI - Western Visayas">Region VI - Western Visayas</option>
+              <option value="Region VII - Central Visayas">Region VII - Central Visayas</option>
+              <option value="Region VIII - Eastern Visayas">Region VIII - Eastern Visayas</option>
+              <option value="Region IX - Zamboanga Peninsula">Region IX - Zamboanga Peninsula</option>
+              <option value="Region X - Northern Mindanao">Region X - Northern Mindanao</option>
+              <option value="Region XI - Davao Region">Region XI - Davao Region</option>
+              <option value="Region XII - SOCCSKSARGEN">Region XII - SOCCSKSARGEN</option>
+              <option value="Region XIII - CARAGA">Region XIII - CARAGA</option>
+              <option value="BARMM - Bangsamoro Autonomous Region in Muslim Mindanao">BARMM - Bangsamoro Autonomous Region in Muslim Mindanao</option>
+            </select>
+            <label for="selectResidence">Region of residence</label>
+          </div>
+        </div>
+        <div class="col-md-4">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="agency" placeholder="AGENCY">
-            <label for="agency">AGENCY</label>
+            <select class="form-select" id="selectService" aria-label="">
+              <option disabled selected>Please Select</option>
+              <option value="DATA">DATA</option>
+              <option value="DATA">DATA</option>
+              <option value="DATA">DATA</option>
+            </select>
+            <label for="selectService">Service Availed</label>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-12">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="address" placeholder="ADDRESS">
-            <label for="address">ADDRESS</label>
-          </div>
+      <hr class="mt-0">
+      <div class="row mt-1">
+        <div class="col-md-12">
+          <h6>INSTRUCTIONS: <span class="fw-bold">Check Mark (✔)</span> your answer to the Citizen's Charter (CC) questions. The Citizen's Charter is an official document that reflects the services of a government agency/office including its requirements, fees, and processing times among others.</h6>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-12">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" placeholder="username@gmail.com">
-            <label for="email">EMAIL</label>
-          </div>
+      <div class="row mt-1">
+        <div class="col-md-12">
+          <table class="table table-condensed">
+            <tbody>
+              <!-- CC1 -->
+              <tr>
+                <td rowspan="2">CC1</td>
+                <td>Which of the following best describes your awareness of a CC?</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc1" id="cc1-1" value="cc1-1">
+                    <label class="form-check-label" for="cc1-1">
+                      1. I know what a CC is and I saw this office's CC.
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc1" id="cc1-2" value="cc1-2">
+                    <label class="form-check-label" for="cc1-2">
+                      2. I know what a CC is but I did NOT see this office's CC.
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc1" id="cc1-3" value="cc1-3">
+                    <label class="form-check-label" for="cc1-3">
+                      3. I learned of the CC only when I saw this office's CC.
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc1" id="cc1-4" value="cc1-4" onclick="check(this.id)">
+                    <label class="form-check-label" for="cc1-4">
+                      4. I do not know what a CC is and I did not see one in this office. (Answer 'N/A' on CC2 and CC3)
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <!-- CC2 -->
+              <tr>
+                <td rowspan="2">CC2</td>
+                <td>If aware of CC (answered 1-3 in CC1), would you say that the CC of this office was...?</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc2" id="cc2-1" value="cc2-1">
+                    <label class="form-check-label" for="cc2-1">
+                      1. Easy to see
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc2" id="cc2-2" value="cc2-2">
+                    <label class="form-check-label" for="cc2-2">
+                      2. Somewhat easy to see
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc2" id="cc2-3" value="cc2-3">
+                    <label class="form-check-label" for="cc2-3">
+                      3. Difficult to see
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc2" id="cc2-4" value="cc2-4">
+                    <label class="form-check-label" for="cc2-4">
+                      4. Not visible at all
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc2" id="cc2-5" value="cc2-5">
+                    <label class="form-check-label" for="cc2-5">
+                      5. N/A
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <!-- CC3 -->
+              <tr>
+                <td rowspan="2">CC3</td>
+                <td>If aware of CC (answered 1-3 in CC1), how much did the CC help you in your transaction?</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc3" id="cc3-1" value="cc3-1">
+                    <label class="form-check-label" for="cc3-1">
+                      1. Helped very much
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc3" id="cc3-2" value="cc3-2">
+                    <label class="form-check-label" for="cc3-2">
+                      2. Somewhat helped
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc3" id="cc3-3" value="cc3-3">
+                    <label class="form-check-label" for="cc3-3">
+                      3. Did not help
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cc3" id="cc3-4" value="cc3-4">
+                    <label class="form-check-label" for="cc3-4">
+                      4. N/A
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-12">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="contactNumber" placeholder="Contact Number">
-            <label for="contactNumber">CONTACT NO.</label>
-          </div>
+      <div class="row mt-1">
+        <div class="col-md-12">
+          <h6>INSTRUCTIONS: <br>
+          For SQD 0-8, please put a <span class="fw-bold">check mark (✔)</span> on the column that best corresponds to your answer.</h6>
         </div>
       </div>
-
-      <!-- RESPONSIVENESS -->
-      <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <div class="rating-slider">
-              <div class="text">
-                  <strong>Responsiveness</strong>
-                  <ul>
-                      <li>awful</li>
-                      <li>bad</li>
-                      <li>okay</li>
-                      <li>good</li>
-                      <li>great</li>
-                  </ul>
-              </div>
-              <div class="smiley">
-                  <svg class="eye left" viewBox="0 0 18 22">
-                      <path d="M12.6744144,18.0128897 C17.3794842,15.6567898 19.3333811,9.83072065 17.0385652,5 C15.7595661,7.57089081 13.5517099,9.64170285 10.4149967,11.2124361 C7.27828344,12.7831694 3.80661788,13.5564215 0,13.5321925 C2.2948159,18.3629131 7.9693445,20.3689896 12.6744144,18.0128897 Z"></path>
-                  </svg>
-                  <svg class="eye right" viewBox="0 0 18 22">
-                      <path d="M12.6744144,18.0128897 C17.3794842,15.6567898 19.3333811,9.83072065 17.0385652,5 C15.7595661,7.57089081 13.5517099,9.64170285 10.4149967,11.2124361 C7.27828344,12.7831694 3.80661788,13.5564215 0,13.5321925 C2.2948159,18.3629131 7.9693445,20.3689896 12.6744144,18.0128897 Z"></path>
-                  </svg>
-                  <svg class="mouth" viewBox="0 0 64 28">
-                      <path d="M32,2 C41.5729357,2 58,10.8218206 58,21 C50.2396023,18.9643641 41.5729357,17.9465462 32,17.9465462 C22.4270643,17.9465462 13.7603977,18.9643641 6,21 C6,10.8218206 22.4270643,2 32,2 Z"></path>
-                  </svg>
-                  <svg class="teeth" viewBox="0 0 64 28">
-                      <path d="M32,7.83261436 C41.5729357,7.83261436 52.5729357,7.05507624 63,1.5 C63,10.3056732 46.3594035,14.5 32,14.5 C17.6405965,14.5 1,10.3056732 1,1.5 C11.4270643,7.05507624 22.4270643,7.83261436 32,7.83261436 Z"></path>
-                  </svg>
-              </div>
-              <div class="slide">
-                  <svg viewBox="0 0 273 12" fill="currentColor"><path d="M266.934082,0.00110627889 C270.247182,-0.0357036686 272.96282,2.62025389 272.99963,5.93335351 C272.999877,5.95556942 273,5.97778653 273,6.00000382 C273,9.31330792 270.314036,11.9992716 267.000732,11.9992716 C266.978515,11.9992716 266.956298,11.9991482 266.934082,11.9989014 L2.96667078,9.06611103 C1.32291919,9.04784825 1.97412392e-14,7.71014921 0,6.06629617 L0,5.93371146 C9.7279267e-16,4.28985843 1.32291919,2.95215939 2.96667078,2.93389661 L266.934082,0.00110627889 Z M267,1.45028446 C264.514719,1.45028446 262.5,3.4872632 262.5,6.00000382 C262.5,8.51274443 264.514719,10.5497232 267,10.5497232 C269.485281,10.5497232 271.5,8.51274443 271.5,6.00000382 C271.5,3.4872632 269.485281,1.45028446 267,1.45028446 Z M210,1.95580884 C207.790861,1.95580884 206,3.7664566 206,6.00000382 C206,8.23355103 207.790861,10.0441988 210,10.0441988 C212.209139,10.0441988 214,8.23355103 214,6.00000382 C214,3.7664566 212.209139,1.95580884 210,1.95580884 Z M137,2.46133321 C135.067003,2.46133321 133.5,4.04565001 133.5,6.00000382 C133.5,7.95435763 135.067003,9.53867443 137,9.53867443 C138.932997,9.53867443 140.5,7.95435763 140.5,6.00000382 C140.5,4.04565001 138.932997,2.46133321 137,2.46133321 Z M64,2.96685758 C62.3431458,2.96685758 61,4.32484341 61,6.00000382 C61,7.67516423 62.3431458,9.03315005 64,9.03315005 C65.6568542,9.03315005 67,7.67516423 67,6.00000382 C67,4.32484341 65.6568542,2.96685758 64,2.96685758 Z M3,3.97790633 C1.8954305,3.97790633 1,4.88323021 1,6.00000382 C1,7.11677742 1.8954305,8.02210131 3,8.02210131 C4.1045695,8.02210131 5,7.11677742 5,6.00000382 C5,4.88323021 4.1045695,3.97790633 3,3.97790633 Z"></path></svg>
-                  <span>
-                      <svg viewBox="0 0 273 12" fill="currentColor"><path d="M266.934082,0.00110627889 C270.247182,-0.0357036686 272.96282,2.62025389 272.99963,5.93335351 C272.999877,5.95556942 273,5.97778653 273,6.00000382 C273,9.31330792 270.314036,11.9992716 267.000732,11.9992716 C266.978515,11.9992716 266.956298,11.9991482 266.934082,11.9989014 L2.96667078,9.06611103 C1.32291919,9.04784825 1.97412392e-14,7.71014921 0,6.06629617 L0,5.93371146 C9.7279267e-16,4.28985843 1.32291919,2.95215939 2.96667078,2.93389661 L266.934082,0.00110627889 Z M267,1.45028446 C264.514719,1.45028446 262.5,3.4872632 262.5,6.00000382 C262.5,8.51274443 264.514719,10.5497232 267,10.5497232 C269.485281,10.5497232 271.5,8.51274443 271.5,6.00000382 C271.5,3.4872632 269.485281,1.45028446 267,1.45028446 Z M210,1.95580884 C207.790861,1.95580884 206,3.7664566 206,6.00000382 C206,8.23355103 207.790861,10.0441988 210,10.0441988 C212.209139,10.0441988 214,8.23355103 214,6.00000382 C214,3.7664566 212.209139,1.95580884 210,1.95580884 Z M137,2.46133321 C135.067003,2.46133321 133.5,4.04565001 133.5,6.00000382 C133.5,7.95435763 135.067003,9.53867443 137,9.53867443 C138.932997,9.53867443 140.5,7.95435763 140.5,6.00000382 C140.5,4.04565001 138.932997,2.46133321 137,2.46133321 Z M64,2.96685758 C62.3431458,2.96685758 61,4.32484341 61,6.00000382 C61,7.67516423 62.3431458,9.03315005 64,9.03315005 C65.6568542,9.03315005 67,7.67516423 67,6.00000382 C67,4.32484341 65.6568542,2.96685758 64,2.96685758 Z M3,3.97790633 C1.8954305,3.97790633 1,4.88323021 1,6.00000382 C1,7.11677742 1.8954305,8.02210131 3,8.02210131 C4.1045695,8.02210131 5,7.11677742 5,6.00000382 C5,4.88323021 4.1045695,3.97790633 3,3.97790633 Z"></path></svg>
-                  </span>
-                  <div></div>
-              </div>
-          </div>
-
-          <svg style="position: absolute; visibility: hidden;">
-              <defs>
-                  <filter id="inset-shadow">
-                      <feOffset dx='0' dy='3' />
-                      <feGaussianBlur stdDeviation='1' result='offset-blur' />
-                      <feComposite operator='out' in='SourceGraphic' in2='offset-blur' result='inverse' />
-                      <feFlood flood-color='black' flood-opacity='.5' result='color' />
-                      <feComposite operator='in' in='color' in2='inverse' result='shadow' />
-                      <feComposite operator='over' in='shadow' in2='SourceGraphic' />
-                  </filter>
-              </defs>
-          </svg>
+      <div class="row mt-1">
+        <div class="col-md-12">
+          <table class="table table-bordered table-condensed table-stripped">
+            <thead>
+              <tr>
+                <td></td>
+                <td><center><img src="assets/img/1.png" alt="" height="40%" width="40%"><br><small>Strongly Disagree</small></center></td>
+                <td><center><img src="assets/img/2.png" alt="" height="40%" width="40%"><br><small>Disagree</small></center></td>
+                <td><center><img src="assets/img/3.png" alt="" height="40%" width="40%"><br><small>Neither Agree nor Disagree</small></center></td>
+                <td><center><img src="assets/img/4.png" alt="" height="40%" width="40%"><br><small>Agree</small></center></td>
+                <td><center><img src="assets/img/5.png" alt="" height="40%" width="40%"><br><small>Strongly Agree</small></center></td>
+                <td><center><h3 class="mb-0">N/A</h3><br><small>Not Applicable</small></center></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td width="30%"><b>SQD0.</b> I am satisfied with the service that I availed.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD1.</b> I spent a reasonable amount of time for my transaction.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD2.</b> The officec followed the transation's requirements and steps based on the information provided.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD3.</b> The steps (including payment) I needed to do for my transaction were easy and simple.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD4.</b> I easily found information about my transaction from the office or its website.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD5.</b> I paid a reasonable amount of fees for my transaction.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD6.</b> I feel the office was fair to everyone, or <i>"walang palakasan"</i>, during my transaction.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD7.</b> I was treated courteously by the staff, and (if asked for help) the staff was helpful.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>SQD8.</b> I got what I needed from the government office, or (if denied) denial of request was sufficiently explained to me.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>
-    <div class="card-footer">
-      <button type="submit" class="btn btn-lg btn-primary">Submit</button>
     </div>
   </div>
-
 </div>
+
+<script type="text/javascript">
+  // Get the radio buttons for choice 1
+  const choice1Option1 = document.getElementById('cc1-1');
+  const choice1Option2 = document.getElementById('cc1-2');
+  const choice1Option3 = document.getElementById('cc1-3');
+  const choice1Option4 = document.getElementById('cc1-4');
+
+  // Get the radio buttons for choice 2
+  const choice2Option5 = document.getElementById('cc2-5');
+
+  // Get the radio buttons for choice 3
+  const choice3Option4 = document.getElementById('cc3-4');
+
+  // Add event listeners to the choice 1 radios
+  choice1Option1.addEventListener('change', function() {
+    // Enable a specific radio button in choice 2 and choice 3 when option 1 is selected
+    if (choice1Option1.checked) {
+      choice2Option5.checked = false;
+      choice3Option4.checked = false;
+      choice2Option5.disabled = true;
+      choice3Option4.disabled = true;
+    }
+  });
+
+  // Add event listeners to the choice 2 radios
+  choice1Option2.addEventListener('change', function() {
+    // Enable a specific radio button in choice 2 and choice 3 when option 2 is selected
+    if (choice1Option2.checked) {
+      choice2Option5.checked = false;
+      choice3Option4.checked = false;
+      choice2Option5.disabled = true;
+      choice3Option4.disabled = true;
+    }
+  });
+
+  // Add event listeners to the choice 3 radios
+  choice1Option3.addEventListener('change', function() {
+    // Enable a specific radio button in choice 2 and choice 3 when option 3 is selected
+    if (choice1Option3.checked) {
+      choice2Option5.checked = false;
+      choice3Option4.checked = false;
+      choice2Option5.disabled = true;
+      choice3Option4.disabled = true;
+    }
+  });
+
+  // Add event listeners to the choice 4 radios
+  choice1Option4.addEventListener('change', function() {
+    // Disable a specific radio button in choice 2 and choice 3 when option 1 is selected
+    if (choice1Option4.checked) {
+      choice2Option5.checked = true;
+      choice3Option4.checked = true;
+      choice2Option5.disabled = false;
+      choice3Option4.disabled = false;
+    } 
+  });
+</script>
 
 <?php include("common/footer.php"); ?>
