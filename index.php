@@ -48,11 +48,12 @@
         </div>
       </div>
 
+      <!-- RESPONSIVENESS -->
       <div class="row">
         <div class="col-lg-12 d-flex justify-content-center">
           <div class="rating-slider">
               <div class="text">
-                  <strong>Rate your experience</strong>
+                  <strong>Responsiveness</strong>
                   <ul>
                       <li>awful</li>
                       <li>bad</li>
@@ -98,12 +99,11 @@
           </svg>
         </div>
       </div>
-
-</div>
-  <div class="card-footer">
-    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+    </div>
   </div>
-</div>
 
 </div>
 
