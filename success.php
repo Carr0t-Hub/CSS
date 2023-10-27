@@ -1,1 +1,5 @@
-<h1>SUCCESS CONGRATULATIONS</h1>
+<?php
+include("common/header.php");
+?>
+
+<?php include("common/footer.php"); ?>

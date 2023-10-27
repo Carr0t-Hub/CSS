@@ -2,7 +2,7 @@
 include("common/header.php");
 include("questionnaire.php");
 ?>
-<form method="POST" action="process.php">
+<form method="POST" action="process/index.php">
   <div class="container">
     <div class="card">
       <div class="card-body">
@@ -24,7 +24,7 @@ include("questionnaire.php");
             <div class="row mt-5">
               <div class="col-md-3">
                 <div class="form-floating mb-3">
-                  <input type="date" class="form-control" id="dateSurvey" placeholder="Select Date" name="dateSurvey">
+                  <input type="date" class="form-control" id="dateSurvey" placeholder="Select Date" name="dateSurvey" disabled>
                   <label for="dateSurvey">Date</label>
                 </div>
               </div>
@@ -314,6 +314,10 @@ include("questionnaire.php");
 <br>
 
 <script type="text/javascript">
+  //set date to #dateSurvey to today date
+
+  document.getElementById('dateSurvey').valueAsDate = new Date();
+
   // Get the radio buttons for choice 1
   const choice1Option1 = document.getElementById('cc1-1');
   const choice1Option2 = document.getElementById('cc1-2');
