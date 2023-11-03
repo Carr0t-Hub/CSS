@@ -22,62 +22,110 @@ $sections = $surveys['sections'];
         }
     }
 </style>
-<div class="d-flex justify-content-center p-2 py-5">
-    <div class="maindiv bg-white  shadow-sm">
-        <div class="p-3  border-bottom text-center">
-            <h3><?= $surveys['title'] ?></h3>
-        </div>
-        <div class="">
-            <?php
-            foreach ($sections as $key => $section) {
-            ?>
-                <div class="p-3 bg-dark text-white">
-                    <h4><?= $section['title']  ?></h4>
-                </div>
-                <div class="p-3 d-flex flex-column" style="gap: 10px">
-                    <?php
-                    foreach ($section['questions'] as $key => $question) {
-                    ?>
-                        <div class="d-flex" style="gap: 12px">
-                            <span><?= $key + 1 ?>.) </span>
-                            <div class="">
-                                <span><?= $question['question'] ?></span>
-                                <div class="pt-2">
-                                    <?php
-                                    foreach ($question['choices'] as $key => $choice) {
-                                    ?>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="choices<?= $section['id'] . $question['id'] ?>" id="choices<?= $question['id'] . $choice['id']  ?>">
-                                            <label class="form-check-label" for="choices<?= $question['id'] . $choice['id']  ?>">
-                                                <?= $choice['choice_content'] ?> <?= $question['id'] . $choice['id']  ?>
-                                            </label>
-                                        </div>
-                                    <?php
-                                    }
-                                    ?>
-                                </div>
+<br>
+<center>
+    <img src="../assets/img/logo.png" height="128px" alt="DA-BAR">
+</center>
+<form action="" method="POST">
+    <div class="d-flex justify-content-center p-2 py-5 pt-4">
 
-                            </div>
+        <div class="maindiv">
+            <div class="">
+                <div class=" bg-white  shadow-sm rounded">
+
+
+
+                    <div class="p-3  border-bottom text-center">
+                        <h3><?= $surveys['title'] ?></h3>
+                    </div>
+
+                    <div class="row p-3 g-2">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="name" placeholder="Full Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="email" placeholder="Email Address" required>
                         </div>
 
+                    </div>
 
-                    <?php
+                    <div class="">
+                        <?php
+                        foreach ($sections as $key => $section) {
+                        ?>
+                            <div class="p-3 bg-dark text-white">
+                                <h4><?= $section['title']  ?></h4>
+                            </div>
+                            <div class="p-3 d-flex flex-column" style="gap: 10px">
+                                <?php
+                                foreach ($section['questions'] as $key => $question) {
+                                ?>
+                                    <div class="d-flex" style="gap: 12px">
+                                        <span><?= $key + 1 ?>.) </span>
+                                        <div class="w-100">
+                                            <span><?= $question['question'] ?></span>
+                                            <div class="pt-2 w-100">
+                                                <?php
+                                                if ($question['type'] == "multiple") {
+                                                    foreach ($question['choices'] as $key => $choice) {
+                                                ?>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choices<?= $section['id'] . $question['id'] ?>" id="choices<?= $question['id'] . $choice['id']  ?>" value="<?= $choice['id'] ?>">
+                                                            <label class="form-check-label" for="choices<?= $question['id'] . $choice['id']  ?>">
+                                                                <?= $choice['choice_content'] ?>
+                                                            </label>
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <div class="">
+                                                        <textarea class="form-control w-100" name="choices<?= $section['id'] . '-' . $question['id'] ?>" rows="2"></textarea>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
 
-                    }
+                                        </div>
+                                    </div>
 
-                    ?>
+
+                                <?php
+
+                                }
+
+                                ?>
 
 
+                            </div>
+                        <?php
+                        }
+                        ?>
+
+
+                    </div>
                 </div>
-            <?php
-            }
-            ?>
-
-
+            </div>
+            <br>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success">SUBMIT</button>
+            </div>
         </div>
-    </div>
-</div>
 
+    </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $("form").submit(function(e) {
+            e.preventDefault();
+            var data = $(this).serialize();
+            console.log(data);
+        });
+    });
+</script>
 
 <?php
 include("../common/footer.php");
