@@ -26,7 +26,7 @@ $sections = $surveys['sections'];
 <center>
     <img src="../assets/img/logo.png" height="128px" alt="DA-BAR">
 </center>
-<form action="" method="POST">
+<form action="../process/submit_survey.php" method="POST">
     <div class="d-flex justify-content-center p-2 py-5 pt-4">
 
         <div class="maindiv">
@@ -70,8 +70,8 @@ $sections = $surveys['sections'];
                                                     foreach ($question['choices'] as $key => $choice) {
                                                 ?>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choices<?= $section['id'] . $question['id'] ?>" id="choices<?= $question['id'] . $choice['id']  ?>" value="<?= $choice['id'] ?>">
-                                                            <label class="form-check-label" for="choices<?= $question['id'] . $choice['id']  ?>">
+                                                            <input class="form-check-input" type="radio" name="<?= $question['id'] ?>" id="q<?= $question['id'] . $choice['id']  ?>" value="<?= $choice['id'] ?>">
+                                                            <label class="form-check-label" for="q<?= $question['id'] . $choice['id']  ?>">
                                                                 <?= $choice['choice_content'] ?>
                                                             </label>
                                                         </div>
@@ -80,7 +80,7 @@ $sections = $surveys['sections'];
                                                 } else {
                                                     ?>
                                                     <div class="">
-                                                        <textarea class="form-control w-100" name="choices<?= $section['id'] . '-' . $question['id'] ?>" rows="2"></textarea>
+                                                        <textarea class="form-control w-100" name="<?= $question['id'] ?>" rows="2"></textarea>
                                                     </div>
                                                 <?php
                                                 }
@@ -118,13 +118,27 @@ $sections = $surveys['sections'];
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function() {
-        $("form").submit(function(e) {
-            e.preventDefault();
-            var data = $(this).serialize();
-            console.log(data);
-        });
-    });
+    // $(document).ready(function() {
+    //     $("form").submit(function(e) {
+    //         e.preventDefault();
+    //         var data = $(this).serialize();
+
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "../config/submit_survey.php",
+    //             data: data,
+    //             success: function(data) {
+    //                 console.log(data);
+    //                 if (data == "success") {
+    //                     alert("Survey Submitted!");
+    //                     window.location.href = "../index.php";
+    //                 } else {
+    //                     alert("Error Submitting Survey!");
+    //                 }
+    //             }
+    //         });
+    //     });
+    // });
 </script>
 
 <?php
