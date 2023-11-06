@@ -33,7 +33,7 @@ $sections = $surveys['sections'];
             <div class="">
                 <div class=" bg-white  shadow-sm rounded">
 
-
+                    <input type="hidden" name="surveyID" value="<?= $surveys['id'] ?>">
 
                     <div class="p-3  border-bottom text-center">
                         <h3><?= $surveys['title'] ?></h3>

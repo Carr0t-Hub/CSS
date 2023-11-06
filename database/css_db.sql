@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2023 at 09:07 AM
+-- Generation Time: Nov 06, 2023 at 03:17 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -96,7 +96,10 @@ CREATE TABLE `ss_choices` (
 
 INSERT INTO `ss_choices` (`id`, `question_id`, `choice_content`) VALUES
 (1, 1, 'Yes'),
-(2, 1, 'No');
+(2, 1, 'No'),
+(3, 4, 'Choice 1'),
+(4, 4, 'Choice 2'),
+(5, 4, 'Choice 3');
 
 -- --------------------------------------------------------
 
@@ -118,7 +121,10 @@ CREATE TABLE `ss_questions` (
 INSERT INTO `ss_questions` (`id`, `sections_id`, `question`, `type`) VALUES
 (1, 1, 'This is a multiple choice question ', 'multiple'),
 (2, 1, 'What is a paragraph?', 'paragraph'),
-(3, 1, 'Do you believe in Paragraph?', 'paragraph');
+(3, 1, 'Do you believe in Paragraph?', 'paragraph'),
+(4, 2, 'This is a multiple choice question', 'multiple'),
+(5, 3, 'Which topic should have been given more emphasis?', 'paragraph'),
+(6, 3, 'What information did you find most helpful in your work?', 'paragraph');
 
 -- --------------------------------------------------------
 
@@ -137,7 +143,9 @@ CREATE TABLE `ss_sections` (
 --
 
 INSERT INTO `ss_sections` (`id`, `survey_id`, `title`) VALUES
-(1, 1, 'Section Survey');
+(1, 1, 'Section Survey'),
+(2, 2, 'Mutiple Choice'),
+(3, 2, 'Paragraph Section');
 
 -- --------------------------------------------------------
 
@@ -157,7 +165,8 @@ CREATE TABLE `ss_surveys` (
 --
 
 INSERT INTO `ss_surveys` (`id`, `title`, `status`, `dateCreated`) VALUES
-(1, 'New Survey Title', 'active', '2023-11-03 05:14:14');
+(1, 'New Survey Title', 'active', '2023-11-03 05:14:14'),
+(2, 'Example Survey', 'active', '2023-11-06 02:17:00');
 
 -- --------------------------------------------------------
 
@@ -245,25 +254,25 @@ ALTER TABLE `ss_answers`
 -- AUTO_INCREMENT for table `ss_choices`
 --
 ALTER TABLE `ss_choices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ss_questions`
 --
 ALTER TABLE `ss_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ss_sections`
 --
 ALTER TABLE `ss_sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ss_surveys`
 --
 ALTER TABLE `ss_surveys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ss_users`

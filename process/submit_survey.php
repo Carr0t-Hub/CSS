@@ -7,9 +7,10 @@ if (isset($_POST['name'])) {
 
     //get all post names and display using foreach
 
-    $sql = "INSERT INTO ss_users (fullName, emailAddress) VALUES (:name, :email)";
+    $sql = "INSERT INTO ss_responses (survey_id, fullName, emailAddress) VALUES (:surveyID,:name, :email)";
     $stmtsql = $conn->prepare($sql);
     $stmtsql->execute(array(
+        "surveyID" => $_POST['surveyID'], //change this to the survey id
         "name" => $_POST['name'],
         "email" => $_POST['email']
     ));
@@ -19,7 +20,6 @@ if (isset($_POST['name'])) {
     //remove name and email from POST
     unset($_POST['name']);
     unset($_POST['email']);
-
 
     foreach ($_POST as $key => $value) {
 
