@@ -53,8 +53,8 @@ $sections = $surveys['sections'];
                         <?php
                         foreach ($sections as $key => $section) {
                         ?>
-                            <div class="p-3 bg-dark text-white">
-                                <h4><?= $section['title']  ?></h4>
+                            <div class="p-3 text-white" style="background: #006838">
+                                <div style="font-size: 24px; font-weight: bold"><?= $section['title']  ?></div>
                             </div>
                             <div class="p-3 d-flex flex-column" style="gap: 10px">
                                 <?php
