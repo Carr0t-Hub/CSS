@@ -5,6 +5,10 @@ include("../config/function.php");
 $surveys = getOneSeminarSurvey($conn, $_GET['id']);
 $sections = $surveys['sections'];
 
+if ($surveys['status'] == "close") {
+    header("Location: closed_survey.php");
+}
+
 ?>
 <style>
     body {
