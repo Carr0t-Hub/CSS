@@ -61,3 +61,21 @@ function getOneSeminarSurvey($mysqli, $id)
 
     return $surveys;
 }
+
+
+function getDivisions($mysqli)
+{
+
+    $sql = "SELECT * FROM division";
+
+    $stmt = $mysqli->prepare($sql);
+
+    $stmt->execute();
+
+    $divisions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //remove the first element of the array
+    array_shift($divisions);
+
+    return $divisions;
+}

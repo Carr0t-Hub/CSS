@@ -260,7 +260,7 @@ include("questionnaire.php");
                   </thead>
                   <tbody>
                     <?php
-                    foreach ($questionnaire as $key => $row) {
+                    foreach ($physical as $key => $row) {
                     ?>
                       <tr>
                         <td width="30%"><b><?= $row['name'] ?>.</b> <?= $row['question'] ?></td>

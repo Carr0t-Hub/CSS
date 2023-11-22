@@ -8,6 +8,7 @@ $dbname = "css_db";
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $mysqli = new PDO("mysql:host=$host;dbname=pds_db", $username, $password);
 
     // Set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
