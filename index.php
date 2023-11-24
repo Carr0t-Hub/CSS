@@ -1,8 +1,14 @@
 <?php
 include("common/header.php");
+include("config/function.php");
+
 include("questionnaire.php");
+
+$divisions = getDivisions($mysqli);
+
 ?>
 <form method="POST" action="process/index.php">
+  <input type="hidden" value="physical" name="type">
   <div class="container">
     <div class="card">
       <div class="card-body">
@@ -61,11 +67,38 @@ include("questionnaire.php");
                   <label for="selectAge">Age</label>
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select class="form-select" id="division" aria-label="" name="division">
+                    <option disabled selected>Please select a division </option>
+
+                    <?php
+
+                    foreach ($divisions as $key => $row) {
+
+                    ?>
+                      <option value="<?= $row['divisionID'] ?>"><?= $row['division'] ?></option>
+                    <?php
+
+                    }
+                    ?>
+                  </select>
+                  <label for="division">Division</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select class="form-select" id="section_unit" aria-label="" name="section_unit">
+
+                  </select>
+                  <label for="section_unit">Section/Unit</label>
+                </div>
+              </div>
             </div>
             <div class="row mt-1">
               <div class="col-md-8">
                 <div class="form-floating">
-                  <select class="form-select" id="selectResidence" aria-label="" name="residence">
+                  <select class="form-select" id="selectResidence" aria-label="" name="region">
                     <option disabled selected>Please Select</option>
                     <option value="NCR - National Capital Region">NCR - National Capital Region</option>
                     <option value="CAR - Cordillera Administrative Region">CAR - Cordillera Administrative Region</option>
@@ -301,7 +334,11 @@ include("questionnaire.php");
           </div>
         </div>
         <br>
-
+        <div class="form-floating">
+          <textarea class="form-control" name="remarks" placeholder="Leave a remarks here" id="floatingTextarea"></textarea>
+          <label for="floatingTextarea">Remarks (optional):</label>
+        </div>
+        <br>
         <div class="d-flex justify-content-end">
           <button type="submit" class="btn btn-success btn-lg">SUBMIT</button>
         </div>
@@ -314,6 +351,29 @@ include("questionnaire.php");
 <br>
 
 <script type="text/javascript">
+  $('#division').change(function() {
+
+    var divisionID = $(this).val();
+    $.ajax({
+      url: "process/divisionSelect.php",
+      method: "POST",
+      data: {
+        division: divisionID
+      },
+      success: function(data) {
+        if (data) {
+
+          $('#section_unit').html(data);
+          $('#section_unit').removeAttr('disabled');
+        } else {
+          $('#section_unit').html('<option value="" disabled selected>No Section Found</option>');
+          $('#section_unit').attr('disabled', 'disabled');
+        }
+
+      }
+    });
+  });
+
   //set date to #dateSurvey to today date
 
   document.getElementById('dateSurvey').valueAsDate = new Date();

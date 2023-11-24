@@ -7,6 +7,7 @@ include("questionnaire.php");
 $divisions = getDivisions($mysqli);
 ?>
 <form method="POST" action="process/index.php">
+    <input type="hidden" value="online" name="type">
     <div class="container">
         <div class="card">
             <div class="card-body">
@@ -96,25 +97,25 @@ $divisions = getDivisions($mysqli);
                         <div class="row mt-1">
                             <div class="col-md-8">
                                 <div class="form-floating">
-                                    <select class="form-select" id="selectResidence" aria-label="" name="residence">
+                                    <select class="form-select" id="selectResidence" aria-label="" name="region">
                                         <option disabled selected>Please Select</option>
-                                        <option value="NCR - National Capital Region">NCR - National Capital Region</option>
-                                        <option value="CAR - Cordillera Administrative Region">CAR - Cordillera Administrative Region</option>
-                                        <option value="Region I - Ilocos Region">Region I - Ilocos Region</option>
-                                        <option value="Region II - Cagayan Valley">Region II - Cagayan Valley</option>
-                                        <option value="Region III - Central Luzon">Region III - Central Luzon</option>
-                                        <option value="Region IV-A - CALABARZON">Region IV-A - CALABARZON</option>
-                                        <option value="Region IV-B - MIMAROPA">Region IV-B - MIMAROPA</option>
-                                        <option value="Region V - Bicol Region">Region V - Bicol Region</option>
-                                        <option value="Region VI - Western Visayas">Region VI - Western Visayas</option>
-                                        <option value="Region VII - Central Visayas">Region VII - Central Visayas</option>
-                                        <option value="Region VIII - Eastern Visayas">Region VIII - Eastern Visayas</option>
-                                        <option value="Region IX - Zamboanga Peninsula">Region IX - Zamboanga Peninsula</option>
-                                        <option value="Region X - Northern Mindanao">Region X - Northern Mindanao</option>
-                                        <option value="Region XI - Davao Region">Region XI - Davao Region</option>
-                                        <option value="Region XII - SOCCSKSARGEN">Region XII - SOCCSKSARGEN</option>
-                                        <option value="Region XIII - CARAGA">Region XIII - CARAGA</option>
-                                        <option value="BARMM - Bangsamoro Autonomous Region in Muslim Mindanao">BARMM - Bangsamoro Autonomous Region in Muslim Mindanao</option>
+                                        <option value="NCR">NCR - National Capital Region</option>
+                                        <option value="CAR">CAR - Cordillera Administrative Region</option>
+                                        <option value="Region I">Region I - Ilocos Region</option>
+                                        <option value="Region II">Region II - Cagayan Valley</option>
+                                        <option value="Region III">Region III - Central Luzon</option>
+                                        <option value="Region IV-A">Region IV-A - CALABARZON</option>
+                                        <option value="Region IV-B">Region IV-B - MIMAROPA</option>
+                                        <option value="Region V">Region V - Bicol Region</option>
+                                        <option value="Region VI">Region VI - Western Visayas</option>
+                                        <option value="Region VII">Region VII - Central Visayas</option>
+                                        <option value="Region VIII">Region VIII - Eastern Visayas</option>
+                                        <option value="Region IX">Region IX - Zamboanga Peninsula</option>
+                                        <option value="Region X">Region X - Northern Mindanao</option>
+                                        <option value="Region XI">Region XI - Davao Region</option>
+                                        <option value="Region XII">Region XII - SOCCSKSARGEN</option>
+                                        <option value="Region XIII">Region XIII - CARAGA</option>
+                                        <option value="BARMM">BARMM - Bangsamoro Autonomous Region in Muslim Mindanao</option>
                                     </select>
                                     <label for="selectResidence">Region of residence</label>
                                 </div>
@@ -164,7 +165,7 @@ $divisions = getDivisions($mysqli);
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc1" id="cc1-4" value="3" onclick="check(this.id)">
+                                                    <input class="form-check-input" type="radio" name="cc1" id="cc1-3" value="3" onclick="check(this.id)">
                                                     <label class="form-check-label" for="cc1-4">
                                                         3. No, not aware of the CC ( Skip questions CC2 and CC3)
                                                     </label>
@@ -212,13 +213,15 @@ $divisions = getDivisions($mysqli);
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc3" id="cc3-2" value="2">
                                                     <div class="d-flex">
-                                                        <label class="form-check-label me-2" for="cc3-2">
-                                                            2. No, I was not able to use the CC because
-                                                        </label>
                                                         <div class="">
-                                                            <input type="text" class="form-control form-control-sm">
+                                                            <input class="form-check-input" type="radio" name="cc3" id="cc3-2" value="2">
+                                                            <label class="form-check-label me-2" for="cc3-2">
+                                                                2. No, I was not able to use the CC because
+                                                            </label>
+                                                        </div>
+                                                        <div class="">
+                                                            <input type="text" name="cc3text" class="form-control form-control-sm" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -266,25 +269,25 @@ $divisions = getDivisions($mysqli);
                                         foreach ($online as $key => $row) {
                                         ?>
                                             <tr>
-                                                <td width="30%"><b><?= $row['name'] ?>.</b> <?= $row['question'] ?></td>
+                                                <td width="30%"><b><?= $row['name'] ?>.</b> <?= $row['question'] ?> <?= $key + 1 ?></td>
                                                 <td class="align-middle">
-                                                    <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-1" value="1" autocomplete="off">
+                                                    <input type="radio" class="btn-check" name="sqd<?= $key + 1  ?>" id="sqd<?= $key ?>-1" value="1" autocomplete="off">
                                                     <label class="btn" for="sqd<?= $key ?>-1"><img src="assets/img/1.png" alt="" height="40%" width="40%"></label>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-2" value="2" autocomplete="off">
+                                                    <input type="radio" class="btn-check" name="sqd<?= $key + 1 ?>" id="sqd<?= $key ?>-2" value="2" autocomplete="off">
                                                     <label class="btn" for="sqd<?= $key ?>-2"><img src="assets/img/2.png" alt="" height="40%" width="40%"></label>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-3" value="3" autocomplete="off">
+                                                    <input type="radio" class="btn-check" name="sqd<?= $key + 1 ?>" id="sqd<?= $key ?>-3" value="3" autocomplete="off">
                                                     <label class="btn" for="sqd<?= $key ?>-3"><img src="assets/img/3.png" alt="" height="40%" width="40%"></label>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-4" value="4" autocomplete="off">
+                                                    <input type="radio" class="btn-check" name="sqd<?= $key + 1 ?>" id="sqd<?= $key ?>-4" value="4" autocomplete="off">
                                                     <label class="btn" for="sqd<?= $key ?>-4"><img src="assets/img/4.png" alt="" height="45%" width="45%"></label>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-5" value="5" autocomplete="off">
+                                                    <input type="radio" class="btn-check" name="sqd<?= $key + 1 ?>" id="sqd<?= $key ?>-5" value="5" autocomplete="off">
                                                     <label class="btn" for="sqd<?= $key ?>-5"><img src="assets/img/5.png" alt="" height="40%" width="40%"></label>
                                                 </td>
                                             </tr>
@@ -313,7 +316,6 @@ $divisions = getDivisions($mysqli);
     </div>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
     $('#division').change(function() {
@@ -339,63 +341,46 @@ $divisions = getDivisions($mysqli);
         });
     });
 
-    //set date to #dateSurvey to today date
-
     document.getElementById('dateSurvey').valueAsDate = new Date();
 
-    // Get the radio buttons for choice 1
-    const choice1Option1 = document.getElementById('cc1-1');
-    const choice1Option2 = document.getElementById('cc1-2');
-    const choice1Option3 = document.getElementById('cc1-3');
-    const choice1Option4 = document.getElementById('cc1-4');
 
-    // Get the radio buttons for choice 2
-    const choice2Option5 = document.getElementById('cc2-5');
+    $('input[name="cc1"]').click(function() {
+        if ($(this).val() == 3) {
+            $('input[name="cc2"]').attr('disabled', 'disabled');
+            $('input[name="cc3"]').attr('disabled', 'disabled');
+            //clear all cc2 name
+            $('input[name="cc2"]').prop('checked', false);
+            $('input[name="cc3"]').prop('checked', false);
+            $('input[name="cc3text"]').val('');
+            //disabled
+            $('input[name="cc3text"]').attr('disabled', 'disabled');
 
-    // Get the radio buttons for choice 3
-    const choice3Option4 = document.getElementById('cc3-4');
-
-    // Add event listeners to the choice 1 radios
-    choice1Option1.addEventListener('change', function() {
-        // Enable a specific radio button in choice 2 and choice 3 when option 1 is selected
-        if (choice1Option1.checked) {
-            choice2Option5.checked = false;
-            choice3Option4.checked = false;
-            choice2Option5.disabled = true;
-            choice3Option4.disabled = true;
+        } else {
+            $('input[name="cc2"]').removeAttr('disabled');
+            $('input[name="cc3"]').removeAttr('disabled');
         }
     });
 
-    // Add event listeners to the choice 2 radios
-    choice1Option2.addEventListener('change', function() {
-        // Enable a specific radio button in choice 2 and choice 3 when option 2 is selected
-        if (choice1Option2.checked) {
-            choice2Option5.checked = false;
-            choice3Option4.checked = false;
-            choice2Option5.disabled = true;
-            choice3Option4.disabled = true;
+
+    $('#cc2-3').click(function() {
+        $('input[name="cc3"]').attr('disabled', 'disabled');
+    });
+    $('input[name="cc2"]').click(function() {
+        if ($(this).val() == 3) {
+            $('input[name="cc3"]').attr('disabled', 'disabled');
+            $('input[name="cc3"]').prop('checked', false);
+            $('input[name="cc3text"]').attr('disabled', 'disabled');
+        } else {
+            $('input[name="cc3"]').removeAttr('disabled');
         }
     });
 
-    // Add event listeners to the choice 3 radios
-    choice1Option3.addEventListener('change', function() {
-        // Enable a specific radio button in choice 2 and choice 3 when option 3 is selected
-        if (choice1Option3.checked) {
-            choice2Option5.checked = false;
-            choice3Option4.checked = false;
-            choice2Option5.disabled = true;
-            choice3Option4.disabled = true;
-        }
-    });
-
-    // Add event listeners to the choice 4 radios
-    choice1Option4.addEventListener('change', function() {
-        // Disable a specific radio button in choice 2 and choice 3 when option 1 is selected
-        if (choice1Option4.checked) {
-            choice2Option5.checked = true;
-            choice3Option4.checked = true;
-            choice2Option5.disabled = false;
-            choice3Option4.disabled = false;
+    $('input[name="cc3"]').click(function() {
+        if ($(this).val() == 2) {
+            $('input[name="cc3text"]').removeAttr('disabled');
+        } else {
+            $('input[name="cc3text"]').attr('disabled', 'disabled');
+            $('input[name="cc3text"]').val('');
         }
     });
 </script>
