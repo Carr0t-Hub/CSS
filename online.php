@@ -5,6 +5,8 @@ include("config/function.php");
 include("questionnaire.php");
 
 $divisions = getDivisions($mysqli);
+$services = getServices($conn, 'online');
+
 ?>
 <form method="POST" action="process/index.php">
     <input type="hidden" value="online" name="type">
@@ -87,14 +89,12 @@ $divisions = getDivisions($mysqli);
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="section_unit" aria-label="" name="section_unit">
+                                    <select class="form-select" id="section_unit" aria-label="" name="section_unit" disabled>
 
                                     </select>
                                     <label for="section_unit">Section/Unit</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mt-1">
                             <div class="col-md-8">
                                 <div class="form-floating">
                                     <select class="form-select" id="selectResidence" aria-label="" name="region">
@@ -121,16 +121,16 @@ $divisions = getDivisions($mysqli);
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="selectService" aria-label="" name="service">
-                                        <option disabled selected>Please Select</option>
-                                        <option value="DATA">DATA</option>
-                                        <option value="DATA">DATA</option>
-                                        <option value="DATA">DATA</option>
+                                <div class="form-floating">
+                                    <select class="form-select" id="selectService" aria-label="" name="service" disabled>
+
                                     </select>
                                     <label for="selectService">Service Availed</label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row mt-1">
+
                         </div>
                     </div>
                 </div>
@@ -308,7 +308,7 @@ $divisions = getDivisions($mysqli);
                 <br>
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-success btn-lg">SUBMIT</button>
+                    <button type="submit" class="btn btn-success btn-lg" id="submitform">SUBMIT</button>
                 </div>
             </div>
         </div>
@@ -340,6 +340,37 @@ $divisions = getDivisions($mysqli);
             }
         });
     });
+
+
+    $('#section_unit').change(function() {
+
+        var section = $(this).val();
+        $.ajax({
+            url: "process/serviceSelect.php",
+            method: "POST",
+            data: {
+                section_unit: section,
+                type: 'online'
+            },
+            success: function(data) {
+                console.log(data);
+
+                if (data) {
+
+                    $('#selectService').html(data);
+                    $('#selectService').removeAttr('disabled');
+                    $('#submitform').removeAttr('disabled');
+                } else {
+                    $('#selectService').html('<option value="" disabled selected>No Service Found</option>');
+                    $('#selectService').attr('disabled', 'disabled');
+                    $('#submitform').attr('disabled', 'disabled');
+                }
+
+            }
+        });
+
+    })
+
 
     document.getElementById('dateSurvey').valueAsDate = new Date();
 

@@ -6,6 +6,8 @@ include("questionnaire.php");
 
 $divisions = getDivisions($mysqli);
 
+$services = getServices($conn, 'physical');
+
 ?>
 <form method="POST" action="process/index.php">
   <input type="hidden" value="physical" name="type">
@@ -25,11 +27,11 @@ $divisions = getDivisions($mysqli);
           <img src="assets/img/logo.png" height="20%" width="20%" alt="DA-BAR">
           <h5 class="fw-bold">HELP US SERVE YOU BETTER!</h5>
         </center>
-        <div class="card">
+        <div class="card p-3">
           <div class="card-body">
-            <div class="row mt-5">
+            <div class="row g-2">
               <div class="col-md-3">
-                <div class="form-floating mb-3">
+                <div class="form-floating">
                   <input type="date" class="form-control" id="dateSurvey" placeholder="Select Date" name="dateSurvey" disabled>
                   <label for="dateSurvey">Date</label>
                 </div>
@@ -88,14 +90,12 @@ $divisions = getDivisions($mysqli);
               </div>
               <div class="col-md-6">
                 <div class="form-floating">
-                  <select class="form-select" id="section_unit" aria-label="" name="section_unit">
+                  <select class="form-select" id="section_unit" aria-label="" name="section_unit" disabled>
 
                   </select>
                   <label for="section_unit">Section/Unit</label>
                 </div>
               </div>
-            </div>
-            <div class="row mt-1">
               <div class="col-md-8">
                 <div class="form-floating">
                   <select class="form-select" id="selectResidence" aria-label="" name="region">
@@ -122,230 +122,225 @@ $divisions = getDivisions($mysqli);
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-floating mb-3">
-                  <select class="form-select" id="selectService" aria-label="" name="service">
-                    <option disabled selected>Please Select</option>
-                    <option value="DATA">DATA</option>
-                    <option value="DATA">DATA</option>
-                    <option value="DATA">DATA</option>
+                <div class="form-floating">
+                  <select class="form-select" id="selectService" aria-label="" name="service" disabled>
                   </select>
                   <label for="selectService">Service Availed</label>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="card mt-3">
-          <div class="card-body">
-            <div class="row mt-1">
-              <div class="col-md-12">
-                <h6>INSTRUCTIONS: <span class="fw-bold">Check Mark (✔)</span> your answer to the Citizen's Charter (CC) questions. The Citizen's Charter is an official document that reflects the services of a government agency/office including its requirements, fees, and processing times among others.</h6>
+          <div class="card mt-3">
+            <div class="card-body">
+              <div class="row mt-1">
+                <div class="col-md-12">
+                  <h6>INSTRUCTIONS: <span class="fw-bold">Check Mark (✔)</span> your answer to the Citizen's Charter (CC) questions. The Citizen's Charter is an official document that reflects the services of a government agency/office including its requirements, fees, and processing times among others.</h6>
+                </div>
               </div>
-            </div>
-            <div class="row mt-1">
-              <div class="col-md-12">
-                <table class="table table-condensed">
-                  <tbody>
-                    <!-- CC1 -->
-                    <tr>
-                      <td rowspan="2">CC1</td>
-                      <td>Which of the following best describes your awareness of a CC?</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc1" id="cc1-1" value="1">
-                          <label class="form-check-label" for="cc1-1">
-                            1. I know what a CC is and I saw this office's CC.
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc1" id="cc1-2" value="2">
-                          <label class="form-check-label" for="cc1-2">
-                            2. I know what a CC is but I did NOT see this office's CC.
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc1" id="cc1-3" value="3">
-                          <label class="form-check-label" for="cc1-3">
-                            3. I learned of the CC only when I saw this office's CC.
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc1" id="cc1-4" value="4" onclick="check(this.id)">
-                          <label class="form-check-label" for="cc1-4">
-                            4. I do not know what a CC is and I did not see one in this office. (Answer 'N/A' on CC2 and CC3)
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- CC2 -->
-                    <tr>
-                      <td rowspan="2">CC2</td>
-                      <td>If aware of CC (answered 1-3 in CC1), would you say that the CC of this office was...?</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc2" id="cc2-1" value="1">
-                          <label class="form-check-label" for="cc2-1">
-                            1. Easy to see
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc2" id="cc2-2" value="2">
-                          <label class="form-check-label" for="cc2-2">
-                            2. Somewhat easy to see
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc2" id="cc2-3" value="3">
-                          <label class="form-check-label" for="cc2-3">
-                            3. Difficult to see
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc2" id="cc2-4" value="4">
-                          <label class="form-check-label" for="cc2-4">
-                            4. Not visible at all
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc2" id="cc2-5" value="5">
-                          <label class="form-check-label" for="cc2-5">
-                            5. N/A
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- CC3 -->
-                    <tr>
-                      <td rowspan="2">CC3</td>
-                      <td>If aware of CC (answered 1-3 in CC1), how much did the CC help you in your transaction?</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc3" id="cc3-1" value="1">
-                          <label class="form-check-label" for="cc3-1">
-                            1. Helped very much
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc3" id="cc3-2" value="2">
-                          <label class="form-check-label" for="cc3-2">
-                            2. Somewhat helped
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc3" id="cc3-3" value="3">
-                          <label class="form-check-label" for="cc3-3">
-                            3. Did not help
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="cc3" id="cc3-4" value="4">
-                          <label class="form-check-label" for="cc3-4">
-                            4. N/A
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card mt-3">
-          <div class="card-body">
-            <div class="row mt-1">
-              <div class="col-md-12">
-                <h6>INSTRUCTIONS: <br>
-                  For SQD 0-8, please put a <span class="fw-bold">check mark (✔)</span> on the column that best corresponds to your answer.</h6>
-              </div>
-            </div>
-            <div class="row mt-1">
-              <div class="col-md-12">
-                <table class="table table-bordered table-condensed table-stripped">
-                  <thead>
-                    <tr>
-                      <td></td>
-                      <td class="fw-bold align-middle">
-                        <center><small>Strongly Disagree</small></center>
-                      </td>
-                      <td class="fw-bold align-middle">
-                        <center><small>Disagree</small></center>
-                      </td>
-                      <td class="fw-bold align-middle">
-                        <center><small>Neither Agree nor Disagree</small></center>
-                      </td>
-                      <td class="fw-bold align-middle">
-                        <center><small>Agree</small></center>
-                      </td>
-                      <td class="fw-bold align-middle">
-                        <center><small>Strongly Agree</small></center>
-                      </td>
-                      <td class="fw-bold align-middle">
-                        <center><small>Not Applicable</small></center>
-                      </td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    foreach ($physical as $key => $row) {
-                    ?>
+              <div class="row mt-1">
+                <div class="col-md-12">
+                  <table class="table table-condensed">
+                    <tbody>
+                      <!-- CC1 -->
                       <tr>
-                        <td width="30%"><b><?= $row['name'] ?>.</b> <?= $row['question'] ?></td>
-                        <td class="align-middle">
-                          <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-1" value="1" autocomplete="off">
-                          <label class="btn" for="sqd<?= $key ?>-1"><img src="assets/img/1.png" alt="" height="40%" width="40%"></label>
-                        </td>
-                        <td class="align-middle">
-                          <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-2" value="2" autocomplete="off">
-                          <label class="btn" for="sqd<?= $key ?>-2"><img src="assets/img/2.png" alt="" height="40%" width="40%"></label>
-                        </td>
-                        <td class="align-middle">
-                          <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-3" value="3" autocomplete="off">
-                          <label class="btn" for="sqd<?= $key ?>-3"><img src="assets/img/3.png" alt="" height="40%" width="40%"></label>
-                        </td>
-                        <td class="align-middle">
-                          <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-4" value="4" autocomplete="off">
-                          <label class="btn" for="sqd<?= $key ?>-4"><img src="assets/img/4.png" alt="" height="45%" width="45%"></label>
-                        </td>
-                        <td class="align-middle">
-                          <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-5" value="5" autocomplete="off">
-                          <label class="btn" for="sqd<?= $key ?>-5"><img src="assets/img/5.png" alt="" height="40%" width="40%"></label>
-                        </td>
-                        <td class="align-middle">
-                          <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-6" value="6" autocomplete="off">
-                          <label class="btn" for="sqd<?= $key ?>-6">
-                            <h3 class="mb-0">N/A</h3>
-                          </label>
+                        <td rowspan="2">CC1</td>
+                        <td>Which of the following best describes your awareness of a CC?</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc1" id="cc1-1" value="1">
+                            <label class="form-check-label" for="cc1-1">
+                              1. I know what a CC is and I saw this office's CC.
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc1" id="cc1-2" value="2">
+                            <label class="form-check-label" for="cc1-2">
+                              2. I know what a CC is but I did NOT see this office's CC.
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc1" id="cc1-3" value="3">
+                            <label class="form-check-label" for="cc1-3">
+                              3. I learned of the CC only when I saw this office's CC.
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc1" id="cc1-4" value="4" onclick="check(this.id)">
+                            <label class="form-check-label" for="cc1-4">
+                              4. I do not know what a CC is and I did not see one in this office. (Answer 'N/A' on CC2 and CC3)
+                            </label>
+                          </div>
                         </td>
                       </tr>
-                    <?php
-                    }
-                    ?>
-                  </tbody>
-                </table>
+                      <!-- CC2 -->
+                      <tr>
+                        <td rowspan="2">CC2</td>
+                        <td>If aware of CC (answered 1-3 in CC1), would you say that the CC of this office was...?</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc2" id="cc2-1" value="1">
+                            <label class="form-check-label" for="cc2-1">
+                              1. Easy to see
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc2" id="cc2-2" value="2">
+                            <label class="form-check-label" for="cc2-2">
+                              2. Somewhat easy to see
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc2" id="cc2-3" value="3">
+                            <label class="form-check-label" for="cc2-3">
+                              3. Difficult to see
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc2" id="cc2-4" value="4">
+                            <label class="form-check-label" for="cc2-4">
+                              4. Not visible at all
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc2" id="cc2-5" value="5">
+                            <label class="form-check-label" for="cc2-5">
+                              5. N/A
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- CC3 -->
+                      <tr>
+                        <td rowspan="2">CC3</td>
+                        <td>If aware of CC (answered 1-3 in CC1), how much did the CC help you in your transaction?</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc3" id="cc3-1" value="1">
+                            <label class="form-check-label" for="cc3-1">
+                              1. Helped very much
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc3" id="cc3-2" value="2">
+                            <label class="form-check-label" for="cc3-2">
+                              2. Somewhat helped
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc3" id="cc3-3" value="3">
+                            <label class="form-check-label" for="cc3-3">
+                              3. Did not help
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cc3" id="cc3-4" value="4">
+                            <label class="form-check-label" for="cc3-4">
+                              4. N/A
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <br>
-        <div class="form-floating">
-          <textarea class="form-control" name="remarks" placeholder="Leave a remarks here" id="floatingTextarea"></textarea>
-          <label for="floatingTextarea">Remarks (optional):</label>
-        </div>
-        <br>
-        <div class="d-flex justify-content-end">
-          <button type="submit" class="btn btn-success btn-lg">SUBMIT</button>
+          <div class="card mt-3">
+            <div class="card-body">
+              <div class="row mt-1">
+                <div class="col-md-12">
+                  <h6>INSTRUCTIONS: <br>
+                    For SQD 0-8, please put a <span class="fw-bold">check mark (✔)</span> on the column that best corresponds to your answer.</h6>
+                </div>
+              </div>
+              <div class="row mt-1">
+                <div class="col-md-12">
+                  <table class="table table-bordered table-condensed table-stripped">
+                    <thead>
+                      <tr>
+                        <td></td>
+                        <td class="fw-bold align-middle">
+                          <center><small>Strongly Disagree</small></center>
+                        </td>
+                        <td class="fw-bold align-middle">
+                          <center><small>Disagree</small></center>
+                        </td>
+                        <td class="fw-bold align-middle">
+                          <center><small>Neither Agree nor Disagree</small></center>
+                        </td>
+                        <td class="fw-bold align-middle">
+                          <center><small>Agree</small></center>
+                        </td>
+                        <td class="fw-bold align-middle">
+                          <center><small>Strongly Agree</small></center>
+                        </td>
+                        <td class="fw-bold align-middle">
+                          <center><small>Not Applicable</small></center>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      foreach ($physical as $key => $row) {
+                      ?>
+                        <tr>
+                          <td width="30%"><b><?= $row['name'] ?>.</b> <?= $row['question'] ?></td>
+                          <td class="align-middle">
+                            <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-1" value="1" autocomplete="off">
+                            <label class="btn" for="sqd<?= $key ?>-1"><img src="assets/img/1.png" alt="" height="40%" width="40%"></label>
+                          </td>
+                          <td class="align-middle">
+                            <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-2" value="2" autocomplete="off">
+                            <label class="btn" for="sqd<?= $key ?>-2"><img src="assets/img/2.png" alt="" height="40%" width="40%"></label>
+                          </td>
+                          <td class="align-middle">
+                            <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-3" value="3" autocomplete="off">
+                            <label class="btn" for="sqd<?= $key ?>-3"><img src="assets/img/3.png" alt="" height="40%" width="40%"></label>
+                          </td>
+                          <td class="align-middle">
+                            <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-4" value="4" autocomplete="off">
+                            <label class="btn" for="sqd<?= $key ?>-4"><img src="assets/img/4.png" alt="" height="45%" width="45%"></label>
+                          </td>
+                          <td class="align-middle">
+                            <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-5" value="5" autocomplete="off">
+                            <label class="btn" for="sqd<?= $key ?>-5"><img src="assets/img/5.png" alt="" height="40%" width="40%"></label>
+                          </td>
+                          <td class="align-middle">
+                            <input type="radio" class="btn-check" name="sqd<?= $key ?>" id="sqd<?= $key ?>-6" value="6" autocomplete="off">
+                            <label class="btn" for="sqd<?= $key ?>-6">
+                              <h3 class="mb-0">N/A</h3>
+                            </label>
+                          </td>
+                        </tr>
+                      <?php
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="form-floating">
+            <textarea class="form-control" name="remarks" placeholder="Leave a remarks here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Remarks (optional):</label>
+          </div>
+          <br>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success btn-lg" id="submitform">SUBMIT</button>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
+    </div>
 </form>
 <br>
 <br>
@@ -373,6 +368,37 @@ $divisions = getDivisions($mysqli);
       }
     });
   });
+
+
+  $('#section_unit').change(function() {
+
+    var section = $(this).val();
+    $.ajax({
+      url: "process/serviceSelect.php",
+      method: "POST",
+      data: {
+        section_unit: section,
+        type: 'physical'
+      },
+      success: function(data) {
+        console.log(data);
+
+        if (data) {
+
+          $('#selectService').html(data);
+          $('#selectService').removeAttr('disabled');
+          $('#submitform').removeAttr('disabled');
+        } else {
+          $('#selectService').html('<option value="" disabled selected>No Service Found</option>');
+          $('#selectService').attr('disabled', 'disabled');
+          $('#submitform').attr('disabled', 'disabled');
+        }
+
+      }
+    });
+
+  })
+
 
   //set date to #dateSurvey to today date
 

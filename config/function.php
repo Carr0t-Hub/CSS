@@ -79,3 +79,18 @@ function getDivisions($mysqli)
 
     return $divisions;
 }
+
+
+function getServices($mysqli, $type)
+{
+
+    $sql = "SELECT * FROM cs_services WHERE status = 'active' AND type = :type";
+
+    $stmt = $mysqli->prepare($sql);
+
+    $stmt->execute(array("type" => $type));
+
+    $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $services;
+}
