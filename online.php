@@ -60,10 +60,10 @@ $services = getServices($conn, 'online');
                                 <div class="form-floating">
                                     <select class="form-select" id="selectAge" aria-label="" name="age">
                                         <option disabled selected>Please Select</option>
-                                        <option value="18 to 24">18 to 24</option>
-                                        <option value="25 to 39">25 to 39</option>
-                                        <option value="40 to 60">40 to 60</option>
-                                        <option value="61 and above">61 and above</option>
+                                        <option value="1">18 to 24</option>
+                                        <option value="2">25 to 39</option>
+                                        <option value="3">40 to 60</option>
+                                        <option value="4">61 and above</option>
                                     </select>
                                     <label for="selectAge">Age</label>
                                 </div>
