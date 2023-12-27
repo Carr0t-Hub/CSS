@@ -5,7 +5,12 @@ if (isset($_POST['section_unit'])) {
     $sectionUnit = $_POST['section_unit'];
     $type = $_POST['type'];
 
-    $sql = "SELECT * FROM cs_services WHERE section = :section AND type = :type AND status = 'active'";
+    // $sql = "SELECT * FROM cs_services WHERE section = :section AND type IN (:type, 'both') AND status = 'active'";
+
+    $sql = "SELECT * FROM cs_services 
+        WHERE (category = 'general' AND type IN (:type, 'both') AND status = 'active') 
+        OR (category <> 'general' AND section = :section AND type IN (:type, 'both') AND status = 'active')";
+
 
     $stmt = $conn->prepare($sql);
     $stmt->execute(['section' => $sectionUnit, 'type' => $type]);
