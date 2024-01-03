@@ -8,7 +8,7 @@ $divisions = getDivisions($mysqli);
 $services = getServices($conn, 'online');
 
 ?>
-<form method="POST" action="process/index.php">
+<form method="POST" action="process/index.php" id="mainform">
     <input type="hidden" value="online" name="type">
     <div class="container">
         <div class="card">
@@ -143,92 +143,106 @@ $services = getServices($conn, 'online');
                         </div>
                         <div class="row mt-1">
                             <div class="col-md-12">
-                                <table class="table table-condensed">
-                                    <tbody>
-                                        <!-- CC1 -->
-                                        <tr>
-                                            <td rowspan="2">CC1</td>
-                                            <td>Do you know about the Citizen's Charter (document of an agency's services and reqs.)?</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc1" id="cc1-1" value="1">
-                                                    <label class="form-check-label" for="cc1-1">
-                                                        1. Yes, aware before my transaction with this office
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc1" id="cc1-2" value="2">
-                                                    <label class="form-check-label" for="cc1-2">
-                                                        2. Yes, but aware only when I saw the CC of this office
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc1" id="cc1-3" value="3" onclick="check(this.id)">
-                                                    <label class="form-check-label" for="cc1-4">
-                                                        3. No, not aware of the CC ( Skip questions CC2 and CC3)
-                                                    </label>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- CC2 -->
-                                        <tr>
-                                            <td rowspan="2">CC2</td>
-                                            <td>If <b>Yes?</b> to the previous question, did you see this office's Citizen's Charter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc2" id="cc2-1" value="1">
-                                                    <label class="form-check-label" for="cc2-1">
-                                                        1. Yes, the CC was easy to find
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc2" id="cc2-2" value="2">
-                                                    <label class="form-check-label" for="cc2-2">
-                                                        2. Yes, but the CC was hard to find
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc2" id="cc2-3" value="3">
-                                                    <label class="form-check-label" for="cc2-3">
-                                                        3. No, I did not see this office's CC (Skip question CC3)
-                                                    </label>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- CC3 -->
-                                        <tr>
-                                            <td rowspan="2">CC3</td>
-                                            <td>If <b>Yes</b> to the previous question, did you use the Citizen's Charter as a guide for the service/s you availed?</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="cc3" id="cc3-1" value="1">
-                                                    <label class="form-check-label" for="cc3-1">
-                                                        1. Yes, I was able to use the CC
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <div class="d-flex">
-                                                        <div class="">
-                                                            <input class="form-check-input" type="radio" name="cc3" id="cc3-2" value="2">
-                                                            <label class="form-check-label me-2" for="cc3-2">
-                                                                2. No, I was not able to use the CC because
-                                                            </label>
-                                                        </div>
-                                                        <div class="">
-                                                            <input type="text" name="cc3text" class="form-control form-control-sm" disabled>
-                                                        </div>
+
+                                <!-- CC1 -->
+                                <div class="form-floating mb-4">
+                                    <div class="d-flex">
+                                        <div style="width: 64px">CC1</div>
+                                        <div class="form-floating">
+                                            Do you know about the Citizen's Charter (document of an agency's services and reqs.)?
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <div style="width: 64px"></div>
+                                        <div class="">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="cc1" id="cc1-1" value="1">
+                                                <label class="form-check-label" for="cc1-1">
+                                                    1. Yes, aware before my transaction with this office
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="cc1" id="cc1-2" value="2">
+                                                <label class="form-check-label" for="cc1-2">
+                                                    2. Yes, but aware only when I saw the CC of this office
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="cc1" id="cc1-3" value="3">
+                                                <label class="form-check-label" for="cc1-3">
+                                                    3. No, not aware of the CC ( Skip questions CC2 and CC3)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- CC2 -->
+                                <div class="form-floating mb-4">
+                                    <div class="d-flex">
+                                        <div style="width: 64px">CC2</div>
+                                        <div>
+                                            If <b>Yes?</b> to the previous question, did you see this office's Citizen's Charter </div>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <div style="width: 64px"></div>
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="cc2" id="cc2-1" value="1">
+                                                <label class="form-check-label" for="cc2-1">
+                                                    1. Yes, the CC was easy to find
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="cc2" id="cc2-2" value="2">
+                                                <label class="form-check-label" for="cc2-2">
+                                                    2. Yes, but the CC was hard to find
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="cc2" id="cc2-3" value="3">
+                                                <label class="form-check-label" for="cc2-3">
+                                                    3. No, I did not see this office's CC (Skip question CC3)
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- CC3 -->
+                                <div class="form-floating">
+                                    <div class="d-flex">
+                                        <div style="width: 64px">CC3</div>
+                                        <div>
+                                            If <b>Yes</b> to the previous question, did you use the Citizen's Charter as a guide for the service/s you availed? </div>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <div style="width: 64px"></div>
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="cc3" id="cc3-1" value="1">
+                                                <label class="form-check-label" for="cc3-1">
+                                                    1. Yes, I was able to use the CC
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <div class="d-flex">
+                                                    <div class="">
+                                                        <input class="form-check-input" type="radio" name="cc3" id="cc3-2" value="2">
+                                                        <label class="form-check-label me-2" for="cc3-2">
+                                                            2. No, I was not able to use the CC because
+                                                        </label>
+                                                    </div>
+                                                    <div class="">
+                                                        <input type="text" name="cc3text" class="form-control form-control-sm" disabled>
                                                     </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -268,8 +282,8 @@ $services = getServices($conn, 'online');
                                         <?php
                                         foreach ($online as $key => $row) {
                                         ?>
-                                            <tr>
-                                                <td width="30%"><b><?= $row['name'] ?>.</b> <?= $row['question'] ?> <?= $key + 1 ?></td>
+                                            <tr class="form-floating">
+                                                <td width="30%" class="titleerror"><b><?= $row['name'] ?>.</b> <?= $row['question'] ?> <?= $key + 1 ?></td>
                                                 <td class="align-middle">
                                                     <input type="radio" class="btn-check" name="sqd<?= $key + 1  ?>" id="sqd<?= $key ?>-1" value="1" autocomplete="off">
                                                     <label class="btn" for="sqd<?= $key ?>-1"><img src="assets/img/1.png" alt="" height="40%" width="40%"></label>
@@ -315,8 +329,138 @@ $services = getServices($conn, 'online');
 
     </div>
 </form>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+    $('#mainform').validate({
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+
+            if (element.attr("name").includes("sqd")) {
+                error.insertAfter(element.parent().parent());
+                element.closest('.form-floating').find('.titleerror').append(error);
+            } else {
+                element.closest('.form-floating').append(error);
+            }
+        },
+        rules: {
+            clientType: {
+                required: true
+            },
+            gender: {
+                required: true
+            },
+            age: {
+                required: true
+            },
+            division: {
+                required: true
+            },
+            section_unit: {
+                required: true
+            },
+            region: {
+                required: true
+            },
+            service: {
+                required: true
+            },
+            cc1: {
+                required: true
+            },
+            cc2: {
+                required: true
+            },
+            cc3: {
+                required: true
+            },
+            sqd1: {
+                required: true
+            },
+            sqd2: {
+                required: true
+            },
+            sqd3: {
+                required: true
+            },
+            sqd4: {
+                required: true
+            },
+            sqd5: {
+                required: true
+            },
+            sqd6: {
+                required: true
+            },
+            sqd7: {
+                required: true
+            },
+            sqd8: {
+                required: true
+            },
+
+        },
+        messages: {
+            clientType: {
+                required: "Client type is required"
+            },
+            gender: {
+                required: "Gender is required"
+            },
+            age: {
+                required: "Age is required"
+            },
+            division: {
+                required: "Division is required"
+            },
+            section_unit: {
+                required: "Section/Unit is required"
+            },
+            region: {
+                required: "Region is required"
+            },
+            service: {
+                required: "Service is required"
+            },
+            cc1: {
+                required: "CC1 is required"
+            },
+            cc2: {
+                required: "CC2 is required"
+            },
+            cc3: {
+                required: "CC3 is required"
+            },
+            sqd1: {
+                required: "SQD1 is required"
+            },
+            sqd2: {
+                required: "SQD2 is required"
+            },
+            sqd3: {
+                required: "SQD3 is required"
+            },
+            sqd4: {
+                required: "SQD4 is required"
+            },
+            sqd5: {
+                required: "SQD5 is required"
+            },
+            sqd6: {
+                required: "SQD6 is required"
+            },
+            sqd7: {
+                required: "SQD7 is required"
+            },
+            sqd8: {
+                required: "SQD8 is required"
+            },
 
 
+        }
+    })
+</script>
 <script type="text/javascript">
     $('#division').change(function() {
 
